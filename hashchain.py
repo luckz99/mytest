@@ -1,35 +1,15 @@
-#!/usr/bin/env python2.7
-import md5;
-import sys;
-import socket;
+from tkinter import *
 
-HOST = 'shell2017.picoctf.com';
-PORT = 7691;
+number1 = 9
+number2 = 8
+word1 = "Kappa!"
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM);
-s.connect((HOST, PORT)); #Connect to server
+root = Tk()
 
-s.recv(4096);
-s.send('f\n'); #We would like to get flag
-data = s.recv(4096);
-user = data.split('\n')[0].split(' ')[5]; #get user id
-data = s.recv(4096);
-tkn = data.split('\n')[0]; #Get token
+#Creating a Label Widget
+myLabel = Label(root, text="Hello World!\nHello You!\nHello My fren!\n" + word1)
 
-print("User: "+user+"\nToken: "+tkn);
-seed = md5.new(user).hexdigest();
-result = tkn;
-print("Seed: "+seed);
-found = False;
-hashc = seed;
+#Shoving it onto the screen
+myLabel.pack()
 
-while(found == False):
-	if (md5.new(hashc).hexdigest() == result):
-		print("Hash found: "+hashc);
-		found = True;
-	else:
-		hashc = md5.new(hashc).hexdigest();
-#s.recv(4096)
-print("Sending hash...");
-s.send(hashc+'\n');
-print(s.recv(4096));
+root.mainloop()
