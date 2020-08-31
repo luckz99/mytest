@@ -11,6 +11,13 @@ root.config(menu=my_menu)
 def our_command():
     pass
 
+#hide all frame
+def hide_all_frames():
+    for widget in frame.winfo_children():
+        widget.destroy()
+
+    frame.pack_forget()
+
 #Create a menu item
 file_menu = Menu(my_menu)
 my_menu.add_cascade(label="File", menu=file_menu)
@@ -38,7 +45,7 @@ ScanFolder_btn = PhotoImage(file='search_small.png')
 #img_label.grid(row=1, column=6)
 
 def thing():
-    mylabel4.config(text="You clicked the button....")
+    mylabel4.config(text="You clicked the button......")
 
 my_button = Button(root, image=detect_btn, command=thing, borderwidth=0)
 my_button.grid(row=0, column=0, padx=20, pady=20)
