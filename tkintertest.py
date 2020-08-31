@@ -73,6 +73,20 @@ def open():
     
 my_btn = Button(root, text="Open File", command=open).grid(row=3,column=0)
 
+#This is for a text box with scroll bar
+scroll_frame = Frame(root)
+my_scrollbar= Scrollbar(scroll_frame, orient=VERTICAL)
+
+#configure scrollbar
+my_text = Text(scroll_frame, width=10, height=10, yscrollcommand=my_scrollbar.set)
+my_text.insert(INSERT, "hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nno\nno\nno\nhi\nji\nji\nji\nji\nji\nji")
+my_text.config(state="disabled")
+my_scrollbar.config(command=my_text.yview)
+my_scrollbar.pack(side=RIGHT, fill=Y)
+scroll_frame.grid(row=10, column=10)
+my_text.pack(pady=15)
+
+
 
 
 root.mainloop()
