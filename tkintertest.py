@@ -1,3 +1,4 @@
+import os, sys
 from tkinter import *
 from tkinter import filedialog
 
@@ -64,14 +65,14 @@ myLabel1 = Label(root, text="Hello World!\nHello You!")
 myLabel1.grid(row=4,column=0)
 
 
-def open():
+def open1():
     global my_label
     root.filename = filedialog.askopenfilename(initialdir="/", title="Select A File", filetypes=(("png files", "*.png"),("all files", "*.*")))
     my_label = Label(root, text=root.filename)
     my_label.grid(row=0,column=2)
 
     
-my_btn = Button(root, text="Open File", command=open).grid(row=3,column=0)
+my_btn = Button(root, text="Open File", command=open1).grid(row=3,column=0)
 
 #This is for a text box with scroll bar
 scroll_frame = Frame(root)
@@ -86,6 +87,23 @@ my_scrollbar.pack(side=RIGHT, fill=Y)
 scroll_frame.grid(row=10, column=10)
 my_text.pack(pady=15)
 
+#scanning directory
+def open_dir():
+    pass
+
+my_btn = Button(root, text="Open Directory", command=open_dir).grid(row=4,column=0)
+
+#this is to write to file beware of the 'open' keyword, some fucntions might have the same name
+def write_file():
+    text_file = open("sameple.txt", "w")
+    text_file.write('xxxxx')
+    text_file.close()
+
+textbox = Text(root, width=40, height=10)
+textbox.grid(row=5,column=0)
+
+write_button = Button(root, text="save", command=write_file)
+write_button.grid(row=6,column=0)
 
 
 
