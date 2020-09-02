@@ -1,6 +1,7 @@
 import os, sys
 from tkinter import *
 from tkinter import filedialog
+from tkinter import ttk
 
 root = Tk()
 root.title('Malicious VBA Macro Detection System')
@@ -105,6 +106,27 @@ textbox.grid(row=5,column=0)
 write_button = Button(root, text="save", command=write_file)
 write_button.grid(row=6,column=0)
 
+#treeview
+treev = ttk.Treeview(root, selectmode='browse')
+treev.grid(row=7,column=0)
+
+treev["columns"] = ("1", "2", "3")
+treev['show'] = 'headings'
+
+treev.column("1", width = 90, anchor ='c') 
+treev.column("2", width = 90, anchor ='se') 
+treev.column("3", width = 90, anchor ='se')
+
+treev.heading("1", text ="Name") 
+treev.heading("2", text ="Sex") 
+treev.heading("3", text ="Age")
+
+treev.insert("", 'end', text ="L11222",  
+             values =("Nidhi", "F", "25")) 
+treev.insert("", 'end', text ="L2", 
+             values =("Nisha", "F", "23")) 
+treev.insert("", 'end', text ="L3", 
+             values =("Preeti", "F", "27"))
 
 
 root.mainloop()
