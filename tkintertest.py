@@ -2,6 +2,7 @@ import os, sys
 from tkinter import *
 from tkinter import filedialog
 from tkinter import ttk
+import time
 
 root = Tk()
 root.title('Malicious VBA Macro Detection System')
@@ -128,5 +129,22 @@ treev.insert("", 'end', text ="L2",
 treev.insert("", 'end', text ="L3", 
              values =("Preeti", "F", "27"))
 
+#Time
+def clock():
+    hour = time.strftime("%H")
+    minute = time.strftime("%M")
+    second = time.strftime("%S")
+
+    time_label.config(text= hour + ":" + minute + ":" + second)
+    time_label.after(1000, clock)
+
+def update():
+    time_label.config(text="New test")
+
+
+time_label = Label(root, text="")
+time_label.grid(row=8, column=0)
+
+clock()
 
 root.mainloop()
