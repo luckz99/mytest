@@ -134,8 +134,10 @@ def clock():
     hour = time.strftime("%H")
     minute = time.strftime("%M")
     second = time.strftime("%S")
+    ampm = time.strftime("%p")
+    timezone = time.strftime("%Z")
 
-    time_label.config(text= hour + ":" + minute + ":" + second)
+    time_label.config(text= timezone + "\t" + hour + ":" + minute + ":" + second + " " + ampm)
     time_label.after(1000, clock)
 
 def update():
