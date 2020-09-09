@@ -108,6 +108,11 @@ write_button = Button(root, text="save", command=write_file)
 write_button.grid(row=6,column=0)
 
 #treeview
+
+def remove_one():
+    x = treev.selection()[0]
+    my_text.insert(INSERT, treev.item(x)["values"][0])
+
 treev = ttk.Treeview(root, selectmode='browse')
 treev.grid(row=7,column=0)
 
@@ -129,6 +134,14 @@ treev.insert("", 'end', text ="L2",
 treev.insert("", 'end', text ="L3", 
              values =("Preeti", "F", "27"))
 
+delete_record = Button(root, text='delete record', command=remove_one)
+delete_record.grid(row=7, column=1)
+
+my_text = Text(root)
+my_text.grid(row=7, column=2)
+
+
+
 #Time
 def clock():
     hour = time.strftime("%H")
@@ -148,5 +161,19 @@ time_label = Label(root, text="")
 time_label.grid(row=8, column=0)
 
 clock()
+
+#create a new window
+def open_help():
+    top = Toplevel()
+    top.title('Help Manual')
+    lbl = Label(top, text="Hello World").pack()
+    btn2 =  Button(top, text='close window', command=top.destroy)
+    btn2.pack()
+
+help_btn = Button(root, text= "help manual", command=open_help)
+help_btn.grid(row=9, column=0)
+
+
+
 
 root.mainloop()
