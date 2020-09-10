@@ -138,9 +138,16 @@ delete_record = Button(root, text='delete record', command=remove_one)
 delete_record.grid(row=7, column=1)
 
 my_text = Text(root)
+my_text.insert(1.0,"ABCDEFGGGG")
+my_text.config(state='disabled')
 my_text.grid(row=7, column=2)
 
+def copy():
+    root.clipboard_clear()
+    root.clipboard_append(my_text.get(1.0, END))
 
+copy_button = Button(root, text='copy', command=copy)
+copy_button.grid(row=7,column=3)
 
 #Time
 def clock():
@@ -160,6 +167,10 @@ def update():
 time_label = Label(root, text="")
 time_label.grid(row=8, column=0)
 
+copy_label = Label(root, text="")
+copy_label.grid(row=7, column=4)
+
+
 clock()
 
 #create a new window
@@ -172,8 +183,6 @@ def open_help():
 
 help_btn = Button(root, text= "help manual", command=open_help)
 help_btn.grid(row=9, column=0)
-
-
 
 
 root.mainloop()
