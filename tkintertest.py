@@ -2,6 +2,7 @@ import os, sys
 from tkinter import *
 from tkinter import filedialog
 from tkinter import ttk
+from tkinter import messagebox
 import time
 
 root = Tk()
@@ -106,6 +107,13 @@ textbox.grid(row=5,column=0)
 
 write_button = Button(root, text="save", command=write_file)
 write_button.grid(row=6,column=0)
+
+#message box
+def popup_message():
+    messagebox.showwarning("THis is an alert box", "one or more file types are unavailable")
+
+message_button = Button(root, text="pop up", command=popup_message)
+message_button.grid(row=4,column=3)
 
 #treeview
 
