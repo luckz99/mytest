@@ -8,6 +8,19 @@ import time
 root = Tk()
 root.title('Malicious VBA Macro Detection System')
 
+style = ttk.Style()
+
+style.theme_use("default")
+
+style.configure("Treeview",
+    background="silver",
+    foreground="black",
+    rowheight=25,
+    fieldbackground="silver"
+                )
+style.map('Treeview',
+    background=[('selected', 'green')])
+
 #Initiating the menu
 my_menu = Menu(root)
 root.config(menu=my_menu)
